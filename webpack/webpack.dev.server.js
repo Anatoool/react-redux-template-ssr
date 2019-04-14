@@ -5,7 +5,7 @@ const config = require('./dev.config');
 
 const { API_URL = 'http://localhost:4000' } = process.env;
 
-const Port = 5000;
+const Port = 3000;
 const Host = '0.0.0.0';
 
 const options = {

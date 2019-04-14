@@ -6,9 +6,9 @@
     "url": "git+https://github.com/Anatoool/react-redux-template.git"
   },
   "scripts": {
-    "build": "webpack --config webpack/prod.config.js",
     "start": "node webpack/webpack.dev.server.js",
-    "server": "node server/start-server.js"
+    "build": "webpack --config webpack/prod.config.js",
+    "build:server": "webpack --config webpack/server.config.js"
   },
   "author": "Anatoliy Zaporozhets",
   "license": "MIT",
@@ -70,6 +70,7 @@
     "eslint-plugin-react": "^7.12.4",
     "progress-bar-webpack-plugin": "^1.12.1",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.3.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }
