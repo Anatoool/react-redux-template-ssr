@@ -1,0 +1,62 @@
+.header-menu
+  position: relative
+  height: 52px
+  padding-top: 3px
+  &__list
+    list-style: none
+    position: absolute
+    top: 100%
+    right: -20px
+    box-shadow: 0 3px 6px rgba(69,79,99,0.16)
+    &-item
+      background: $white
+      height: 0
+      transition: all 0.15s
+      &:nth-child(1)
+        transition-delay: 0.15s
+      &:nth-child(2)
+        transition-delay: 0.12s
+      &:nth-child(3)
+        transition-delay: 0.09s
+      &:nth-child(4)
+        transition-delay: 0.06s
+      &:nth-child(5)
+        transition-delay: 0.03s
+      &:nth-child(6)
+        transition-delay: 0s
+    &-link
+      text-decoration: none
+      width: 140px
+      height: 100%
+      overflow: hidden
+      display: block
+      line-height: 40px
+      padding-left: 16px
+      color: $light-grey !important
+      font-size: 0.8125rem
+      &:hover
+        color: $sky-blue !important
+        background: rgba($sky-blue, 0.08)
+      &._active
+        color: $sky-blue !important
+  &__list._opened
+    .header-menu__list-item
+      height: 40px
+      &:nth-child(1)
+        transition-delay: 0s
+      &:nth-child(2)
+        transition-delay: 0.03s
+      &:nth-child(3)
+        transition-delay: 0.06s
+      &:nth-child(4)
+        transition-delay: 0.09s
+      &:nth-child(5)
+        transition-delay: 0.12s
+      &:nth-child(6)
+        transition-delay: 0.15s
+
+
+@media(max-width: 768px)
+  .header-menu
+    &__list
+      right: -10px

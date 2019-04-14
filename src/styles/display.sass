@@ -1,0 +1,34 @@
+.d-on-tablet-block,
+.d-on-tablet-flex,
+.d-on-tablet-inline
+  display: none
+
+.d-on-mobile-block,
+.d-on-mobile-flex,
+.d-on-mobile-inline
+  display: none
+
+.d-only-on-mobile
+  display: none
+
+@media(max-width: 1280px)
+  .d-on-tablet-block
+    display: block
+  .d-on-tablet-flex
+    display: flex
+  .d-on-tablet-inline
+    display: inline-block
+
+@media(max-width: 768px)
+  .d-on-mobile-block
+    display: block
+  .d-on-mobile-flex
+    display: flex
+  .d-on-mobile-inline
+    display: inline-block
+
+  .d-none-on-mobile
+    display: none
+
+  .d-only-on-mobile
+    display: block
