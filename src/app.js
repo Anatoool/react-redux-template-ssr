@@ -1,7 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import { configureStore } from 'store';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Root } from 'containers/root';
 
@@ -20,9 +19,7 @@ class App extends React.Component {
     const { store } = this;
     return (
       <Provider store={store}>
-        <BrowserRouter>
-          <Root {...this.props} />
-        </BrowserRouter>
+        <Root {...this.props} />
       </Provider>
     );
   }
