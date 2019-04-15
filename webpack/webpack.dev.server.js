@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const paths = require('./_paths');
 const config = require('./dev.config');
 
-const { API_URL = 'http://localhost:4000' } = process.env;
+const { API_DOMAIN = 'http://localhost:4000' } = process.env;
 
 const Port = 3000;
 const Host = '0.0.0.0';
@@ -22,7 +22,7 @@ const options = {
   historyApiFallback: true,
   proxy: {
     '/api/**': {
-      target: API_URL,
+      target: API_DOMAIN,
       secure: false,
       changeOrigin: true,
     },

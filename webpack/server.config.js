@@ -6,7 +6,7 @@ module.exports = {
   target: 'node',
   entry: './server/index.js',
   output: {
-    path: paths.appBuild,
+    path: paths.appBuildServer,
     filename: 'server.js'
   },
   module: {
@@ -17,9 +17,16 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(sass|css|scss|svg)$/,
+        test: /\.(sass|css|scss)$/,
         use: 'ignore-loader',
-      }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          { loader: 'svg-sprite-loader', options: {} },
+          'svgo-loader',
+        ],
+      },
     ]
   },
   externals: [webpackNodeExternals()]

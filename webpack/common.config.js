@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const paths = require('./_paths');
 
-const API_URL = process.env.API_URL || 'http://localhost:4000';
+const API_DOMAIN = process.env.API_DOMAIN || 'http://localhost:4000';
 const API_VERSION = process.env.API_VERSION || '0.1';
 
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
     ]),
     new webpack.DefinePlugin({
       'process.env': {
-        API_URL: JSON.stringify(API_URL),
+        API_DOMAIN: JSON.stringify(API_DOMAIN),
         API_VERSION: JSON.stringify(API_VERSION),
       },
     }),
