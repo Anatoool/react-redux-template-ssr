@@ -37,7 +37,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'file-loader',
         options: {
-          name: '/assets/fonts/[name].[ext]',
+          name: 'fonts/[name].[ext]',
         },
       },
       {

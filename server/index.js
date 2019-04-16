@@ -7,7 +7,7 @@ const app = express();
 
 const router = express.Router();
 
-router.use('/static', express.static(path.resolve('./build/static')));
+router.use('/assets', express.static(path.resolve('./build/assets')));
 router.get('/*', serverRender);
 
 app.use(router);

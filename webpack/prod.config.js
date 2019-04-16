@@ -14,7 +14,7 @@ const prodConfig = {
   output: {
     filename: '[chunkhash]_[name].js',
     path: paths.appBuild,
-    publicPath: './static',
+    publicPath: './assets',
   },
 
   plugins: [
