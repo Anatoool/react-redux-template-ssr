@@ -6,7 +6,12 @@ import { Root } from 'containers/root';
 
 import './styles/index.sass';
 
-const initialState = {};
+let initialState = {};
+// if (window) {
+//   initialState = window.REDUX_STATE;
+//   delete window.REDUX_STATE;
+// }
+
 const store = configureStore(initialState);
 
 class App extends React.Component {

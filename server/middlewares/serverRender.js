@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router';
+import { Provider } from 'react-redux';
 
 // import our main App component
 import App from '../../src/app';
+import { configureStore } from '../../src/store';
 
 const path = require("path");
 const fs = require("fs");
@@ -19,12 +21,32 @@ export default (req, res, next) => {
       return res.status(404).end()
     }
 
+    // configure store
+    const initialState = {
+      ideasState: {
+        list: {
+          ideas: [
+            { _id: 'dscsdcdcs', title: 'title', description: 'description' },
+          ]
+        },
+      }
+    };
+    const store = configureStore(initialState);
+    const reduxState = store.getState();
+
     // render the app as a string
     const context = {};
     const html = ReactDOMServer.renderToString(
-      <StaticRouter location={req.url} context={context}>
-        <App />
-      </StaticRouter>
+      {/*<React.Fragment>*/}
+        <StaticRouter location={req.url} context={context}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </StaticRouter>
+        {/*<script>*/}
+          {/*window.REDUX_STATE = ${ JSON.stringify( reduxState ) }*/}
+        {/*</script>*/}
+      {/*</React.Fragment>*/}
     );
 
     // inject the rendered app into our html and send it
