@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { Provider } from 'react-redux';
+import fetch from 'node-fetch';
 
 // import our main App component
 import App from '../../src/app';
@@ -15,7 +16,7 @@ export default (req, res, next) => {
   // point to the html file created by CRA's build tool
   const filePath = path.resolve('./build/assets/index.html');
 
-  fs.readFile(filePath, 'utf8', (err, htmlData) => {
+  fs.readFile(filePath, 'utf8', async (err, htmlData) => {
     if (err) {
       console.error('err', err);
       return res.status(404).end()
@@ -23,18 +24,24 @@ export default (req, res, next) => {
 
     // configure store
     const initialState = {
-      ideasState: {
-        list: {
-          ideas: [
-            { _id: 'dscsdcdcs', title: 'title', description: 'description' },
-          ]
-        },
-      }
+      // ideasState: {
+      //   list: {
+      //     ideas: [
+      //       { _id: 'dscsdcdcs', title: 'title', description: 'description' },
+      //     ]
+      //   },
+      // }
     };
     const store = configureStore(initialState);
+
+    const response = await fetch('http://localhost:4000/api/ideas?page=1&pageSize=10');
+    const body = await response.text();
+
+    console.log(body);
+
     const reduxState = store.getState();
 
-    const stringifiedReduxState = JSON.stringify( reduxState );
+    const stringifiedReduxState = JSON.stringify( reduxState ).replace(/</g, '\\u003c'); // because XSS
 
     // render the app as a string
     const context = {};
