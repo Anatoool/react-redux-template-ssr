@@ -34,26 +34,26 @@ export default (req, res, next) => {
     const store = configureStore(initialState);
     const reduxState = store.getState();
 
+    const stringifiedReduxState = JSON.stringify( reduxState );
+
     // render the app as a string
     const context = {};
     const html = ReactDOMServer.renderToString(
-      {/*<React.Fragment>*/}
+      <React.Fragment>
+
         <StaticRouter location={req.url} context={context}>
           <Provider store={store}>
             <App />
           </Provider>
         </StaticRouter>
-        {/*<script>*/}
-          {/*window.REDUX_STATE = ${ JSON.stringify( reduxState ) }*/}
-        {/*</script>*/}
-      {/*</React.Fragment>*/}
+      </React.Fragment>
     );
 
     // inject the rendered app into our html and send it
     return res.send(
       htmlData.replace(
         '<div id="root"></div>',
-        `<div id="root">${html}</div>`
+        `<div id="root">${html}</div><script>window.REDUX_STATE = ${stringifiedReduxState};</script>`
       )
     );
   });

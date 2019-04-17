@@ -34,7 +34,6 @@ export class Root extends React.Component {
     return (
       <div className="root-container">
         <Header />
-
         <div className="root-container__content">
           <Switch>
             <CommonContainers />
