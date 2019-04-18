@@ -34,10 +34,10 @@ export default (req, res, next) => {
     };
     const store = configureStore(initialState);
 
-    const response = await fetch('http://localhost:4000/api/ideas?page=1&pageSize=10');
-    const body = await response.text();
-
-    console.log(body);
+    // const response = await fetch('http://localhost:4000/api/ideas?page=1&pageSize=10');
+    // const body = await response.text();
+    //
+    // console.log(body);
 
     const reduxState = store.getState();
 
